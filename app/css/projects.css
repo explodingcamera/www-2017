@@ -1,0 +1,46 @@
+.card {
+	height: 100%;
+	width: 100%;
+	color: black;
+	font-family: "Roboto Mono";
+	border-radius: 0;
+	width: 100%;
+	color: #000;
+	min-height: 567px;
+	display: flex;
+  background: rgba(249, 249, 249, 0.93);
+  transition: transform .2s;
+}
+.card:hover {
+  transform: translateY(-4px);
+}
+.header div {
+	display: flex;
+}
+.header {
+	height: 150px;
+}
+.header p {
+  color: #007886 !important;
+}
+@media (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: portrait)  {
+	.header {
+		height: 260px !important;
+	}
+	.header h5 {
+		font-size: 60px !important;
+	}
+	.header p {
+		font-size: 37px !important;
+	}
+	.cardText p {
+		font-size: 33px;
+    line-height: 43px !important;
+	}
+	.card button {
+		font-size: 41px !important;
+    height: 72px !important;
+    padding: 17px !important;
+	}
+}

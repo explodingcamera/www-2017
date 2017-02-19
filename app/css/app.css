@@ -1,0 +1,59 @@
+.app {
+	margin: 0 auto;
+	max-width: 1280px;
+}
+
+.content {
+	min-height: calc(100vh - 160px);
+	padding: 0 50px 40px;
+}
+
+.content {
+	align-items: center;
+	display: flex;
+}
+
+.navbar .logo, .navbar .active, .navbar a:hover {
+  color: black;
+}
+
+/* BACKGROUND */
+.scene {
+	pointer-events: none;
+	position: fixed;
+	z-index: -1;
+	transform: scale(1.25) !important;
+	width: 100vw;
+	overflow: hidden;
+	padding: 0;
+  margin: 0;
+}
+
+.background {
+	height: 100vh;
+  width: 100vw;
+	z-index: -1;
+}
+
+.background {
+	background-image: url(https://explodingcamera.xyz/img/10.jpg);
+	background-attachment: scroll;
+	background-size: cover;
+	background-position: bottom;
+}
+
+.backgroundVideo {
+	width: 100vw;
+  height: 100vh;
+}
+
+.backgroundVideo video {
+	min-width: 100%;
+  min-height: 100%;
+	width: auto;
+	height: auto;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+}

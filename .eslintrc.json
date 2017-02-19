@@ -1,0 +1,11 @@
+{
+		"extends": ["xo/esnext", "xo/browser", "xo-react"],
+    "rules": {
+			"react/forbid-component-props": [0]
+		},
+		"env": {
+        "browser": true,
+				"node": true
+    },
+		"parser": "babel-eslint"
+}
