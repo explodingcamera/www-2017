@@ -4,8 +4,6 @@ import HtmlWebpackHarddiskPlugin from 'html-webpack-harddisk-plugin';
 import path from 'path';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 
-import combineLoaders from 'webpack-combine-loaders';
-
 export default {
 	entry: {
 		js: ['./app'],
@@ -54,8 +52,7 @@ export default {
 				fallback: 'style-loader',
 				use: 'css-loader?importLoaders=1!postcss-loader'
 			})
-		}
-		]
+		}]
 	},
 	plugins: [
 		new webpack.DefinePlugin({
@@ -64,7 +61,6 @@ export default {
 		new webpack.optimize.CommonsChunkPlugin({
 			name: 'vendor',
 			minChunks: Infinity
-			// filename: 'vendor.[chunkhash].js'
 		}),
 		new HtmlWebpackHarddiskPlugin(),
 		new HtmlWebpackPlugin({
