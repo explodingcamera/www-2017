@@ -6,11 +6,16 @@
 .content {
 	min-height: calc(100vh - 160px);
 	padding: 0 50px 40px;
-}
-
-.content {
 	align-items: center;
 	display: flex;
+}
+
+@media (max-width: 761px), (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: portrait)  {
+	.content {
+		min-height: calc(100vh - 53px);
+		padding: 0 11px 0;;
+	}
 }
 
 .navbar .logo, .navbar .active, .navbar a:hover {

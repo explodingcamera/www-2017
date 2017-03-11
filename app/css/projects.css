@@ -23,7 +23,7 @@
 .header p {
   color: #007886 !important;
 }
-@media (-webkit-min-device-pixel-ratio: 2)
+/*@media (-webkit-min-device-pixel-ratio: 2)
   and (orientation: portrait)  {
 	.header {
 		height: 260px !important;
@@ -43,4 +43,4 @@
     height: 72px !important;
     padding: 17px !important;
 	}
-}
+}*/

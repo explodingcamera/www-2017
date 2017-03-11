@@ -1,8 +1,43 @@
 import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
+import SriPlugin from 'webpack-subresource-integrity';
 import HtmlWebpackHarddiskPlugin from 'html-webpack-harddisk-plugin';
 import path from 'path';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
+import ManifestPlugin from 'webpack-manifest-plugin';
+import OfflinePlugin from 'offline-plugin';
+
+const prod = process.env.NODE_ENV === 'production';
+
+const plugins = [
+	new webpack.optimize.CommonsChunkPlugin({
+		name: 'vendor',
+		minChunks: Infinity
+	}),
+	new HtmlWebpackPlugin({
+		template: 'app/index.ejs',
+		alwaysWriteToDisk: true,
+		hash: false,
+		title: 'explodingcamera',
+		filename: `${__dirname}/build/index.html`
+	}),
+	new HtmlWebpackHarddiskPlugin(),
+	new ManifestPlugin(),
+	new OfflinePlugin({
+		external: ['bg1.webm']
+	})
+];
+
+if (prod) {
+	plugins.push(...[
+		new webpack.optimize.UglifyJsPlugin(),
+		new ExtractTextPlugin({filename: '[name].[hash].css', allChunks: true}),
+		new SriPlugin({
+			hashFuncNames: ['sha256', 'sha384', 'sha512'],
+			enabled: true
+		})
+	]);
+}
 
 export default {
 	entry: {
@@ -12,8 +47,9 @@ export default {
 		]
 	},
 	output: {
-		path: './build',
-		filename: '[name].[chunkhash].js'
+		path: path.join(__dirname, 'build'),
+		filename: '[name].[chunkhash].js',
+		crossOriginLoading: 'anonymous'
 	},
 	bail: true,
 	module: {
@@ -41,37 +77,29 @@ export default {
 		{
 			test: /\.css$/,
 			exclude: [/react-image-gallery/],
-			loader:	ExtractTextPlugin.extract({
-				fallback: 'style-loader',
-				use: 'css-loader?modules&importLoaders=1&localIdentName="[path][name]__[local]--[hash:base64:5]"!postcss-loader'
-			})
+			loader:	prod ? ExtractTextPlugin.extract({
+				fallback: 'style-loader!css-loader?modules&importLoaders=1!postcss-loader',
+				use: 'css-loader?modules&importLoaders=1!postcss-loader'
+			}) : 'style-loader!css-loader?modules&importLoaders=1&localIdentName="[path][name]__[local]--[hash:base64:5]"!postcss-loader'
 		}, {
 			test: /\.css$/,
 			include: [/react-image-gallery/],
-			loader:	ExtractTextPlugin.extract({
+			loader:	prod ? ExtractTextPlugin.extract({
 				fallback: 'style-loader',
 				use: 'css-loader?importLoaders=1!postcss-loader'
-			})
+			}) : 'style-loader!css-loader?importLoaders=1&localIdentName="[path][name]__[local]--[hash:base64:5]"!postcss-loader'
 		}]
 	},
-	plugins: [
-		new webpack.DefinePlugin({
-			'process.env.NODE_ENV': '"production"'
-		}),
-		new webpack.optimize.CommonsChunkPlugin({
-			name: 'vendor',
-			minChunks: Infinity
-		}),
-		new HtmlWebpackHarddiskPlugin(),
-		new HtmlWebpackPlugin({
-			alwaysWriteToDisk: true,
-			hash: false,
-			title: 'explodingcamera.com',
-			filename: `${__dirname}/build/index.html`
-		}),
-		// new webpack.optimize.UglifyJsPlugin(),
-		new ExtractTextPlugin({filename: '[name].[chunkhash].css', allChunks: true})
-	],
+	devtool: 'inline-source-map',
+	devServer: {
+		inline: true,
+		contentBase: path.join(__dirname, 'build'),
+		compress: true,
+		port: 8081,
+		historyApiFallback: true,
+		clientLogLevel: 'warning'
+	},
+	plugins,
 	externals: {
 		parallax: 'Parallax'
 	},

@@ -11,6 +11,8 @@ import Routes from './pages/routes';
 // http://stackoverflow.com/a/34015469/988941
 injectTapEventPlugin();
 
+require('offline-plugin/runtime').install();
+
 const AppContainer = document.createElement('div');
 AppContainer.id = 'app';
 document.body.appendChild(AppContainer);

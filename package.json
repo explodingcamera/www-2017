@@ -8,8 +8,8 @@
   },
   "scripts": {
     "test": "xo",
-    "build": "webpack",
-    "dev": "webpack-dev-server --history-api-fallback --inline --colors --inline --port 8081 --content-base build/"
+    "build": "cross-env NODE_ENV=production webpack",
+    "dev": "webpack-dev-server"
   },
   "repository": {
     "type": "git",
@@ -32,10 +32,11 @@
     "eslint-plugin-react": "^6.8.0",
     "extract-text-webpack-plugin": "^2.0.0-beta.5",
     "flexboxgrid": "^6.3.1",
-    "html-webpack-harddisk-plugin": "0.0.2",
+    "html-webpack-harddisk-plugin": "0.1.0",
     "html-webpack-plugin": "^2.25.0",
-    "mobx": "^2.7.0",
+    "mobx": "^3.1.0",
     "node-sass": "^4.1.1",
+    "offline-plugin": "^4.6.1",
     "parallax": "gist:9483f23e652b06b6ddd875183425cc10",
     "postcss-cssnext": "^2.9.0",
     "postcss-loader": "^1.2.1",
@@ -52,11 +53,16 @@
     "react-tap-event-plugin": "^2.0.1",
     "react-toolbox": "^2.0.0-beta.6",
     "rimraf": "^2.5.4",
-    "sass-loader": "^4.1.1",
+    "sass-loader": "^6.0.2",
     "style-loader": "^0.13.1",
     "webpack": "^2.2.0",
     "webpack-combine-loaders": "^2.0.3",
-    "webpack-dev-server": "^1.16.2",
+    "webpack-dev-server": "^2.4.1",
+    "webpack-manifest-plugin": "^1.1.0",
     "xo": "^0.17.1"
+  },
+  "devDependencies": {
+    "cross-env": "^3.2.3",
+    "webpack-subresource-integrity": "^0.8.2"
   }
 }
