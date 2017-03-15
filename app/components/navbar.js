@@ -1,8 +1,8 @@
 import React from 'react';
-import navCss from './../css/navbar.css';
-import {Link} from 'react-router';
+import navCss from 'css/navbar.css';
+import {NavLink as Link} from 'react-router-dom';
 
-const NavLink = props => <li><Link {...props} activeClassName={navCss.active}/></li>;
+const NavLink = props => <li><Link {...props} exact activeClassName={navCss.active}/></li>;
 const NavIcons = () => (
 	<div className={navCss.iconWrapper}>
 		<a rel="noopener noreferrer" target="_blank" style={{marginLeft: 10}} href="https://twitter.com/explodingcamera">
@@ -49,6 +49,8 @@ class Navbar extends React.Component {
 		);
 	}
 }
+
 Navbar.propTypes = {
 };
+
 export default Navbar;

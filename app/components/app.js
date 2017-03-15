@@ -2,7 +2,7 @@ import React from 'react';
 import css from 'css/app.css';
 import 'parallax/index';
 
-import Navbar from 'components/navbar';
+import Navbar from './navbar';
 
 class App extends React.Component {
 	componentDidMount() {
@@ -38,8 +38,5 @@ class App extends React.Component {
 }
 App.propTypes = {
 	children: React.PropTypes.element
-	// location: React.PropTypes.shape({
-	// 	pathname: React.PropTypes.string
-	// })
 };
 export default App;
