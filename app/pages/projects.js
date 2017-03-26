@@ -22,7 +22,7 @@ const cardData = [{
 	title: 'Musiqpad (discontinued)',
 	subtitle: '2016',
 	img: 'https://explodingcamera.xyz/i/chrome_2017-01-08_18-32-45.jpg',
-	text: `Musiqpad was/is a social-music software platform for users to host their own rooms and enjoy music together with others. Our Team sadly doen't have enought time for it anymore but I hope we can continue to work on it in the future.`,
+	text: `Musiqpad was/is a social-music software platform for users to host their own rooms and enjoy music together with others. Our Team sadly doesn't have enought time for it anymore but I hope we can continue to work on it in the future.`,
 	actions: <div>
 		<a rel="noopener noreferrer" target="_blank" href="https://github.com/musiqpad">
 			<Button label="Github"/>
