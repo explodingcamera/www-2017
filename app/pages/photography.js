@@ -54,8 +54,8 @@ class Navbar extends React.Component {
 					items={images}
 					showPlayButton={false}
 					thumbnailPosition="left"
-					onLoad={this.handleImageLoad}
 					slideDuration={100}
+					onLoad={this.handleImageLoad}
 					/>
 			</div>
 

@@ -12,5 +12,5 @@ export default class Router extends React.Component {
 }
 
 Router.propTypes = {
-	children: React.PropTypes.element
+	children: React.PropTypes.element.isRequired
 };

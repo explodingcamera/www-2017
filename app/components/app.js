@@ -12,7 +12,7 @@ class App extends React.Component {
 		parallax.enable();
 	}
 	render() {
-		// let currentPage = JSON.stringify(this.props.location.pathname).replace(/"|\//g, '');
+		// ! let currentPage = JSON.stringify(this.props.location.pathname).replace(/"|\//g, '');
 		// currentPage = currentPage ? currentPage : 'home';
 		return (
 			<div>
@@ -37,6 +37,6 @@ class App extends React.Component {
 	}
 }
 App.propTypes = {
-	children: React.PropTypes.element
+	children: React.PropTypes.element.isRequired
 };
 export default App;
