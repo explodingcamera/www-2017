@@ -16,6 +16,8 @@
 }
 .header div {
 	display: flex;
+	justify-content: space-between;
+	width: 100%;
 }
 .header {
 	height: 150px;

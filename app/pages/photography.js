@@ -1,6 +1,6 @@
 import React from 'react';
 import ImageGallery from 'react-image-gallery';
-import css from './../css/photography.css';
+
 import 'react-image-gallery/styles/css/image-gallery.css';
 
 class Navbar extends React.Component {
@@ -51,7 +51,6 @@ class Navbar extends React.Component {
 		return (
 			<div>
 				<ImageGallery
-					ref={i => this._imageGallery = i}
 					items={images}
 					showPlayButton={false}
 					thumbnailPosition="left"

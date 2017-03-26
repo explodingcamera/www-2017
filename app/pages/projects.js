@@ -6,6 +6,19 @@ import {Row, Col} from 'react-flexbox-grid';
 import css from 'css/projects.css';
 
 const cardData = [{
+	title: 'LiveCount.pro',
+	subtitle: '2017 - now',
+	img: 'https://i.imgur.com/ynb2dUZ.png',
+	text: `LiveCount is a realtime follower/subscriber counter with support for multiple social networks and multiple channels at the same time. I created this just as a quick project over the course of one weekend.`,
+	actions: <div>
+		<a rel="noopener noreferrer" target="_blank" href="https://livecount.pro">
+			<Button label="livecount.pro"/>
+		</a>
+		<a rel="noopener noreferrer" target="_blank" href="https://github.com/explodingcamera/livecount.pro">
+			<Button label="Github"/>
+		</a>
+	</div>
+}, {
 	title: 'Musiqpad (discontinued)',
 	subtitle: '2016',
 	img: 'https://explodingcamera.xyz/i/chrome_2017-01-08_18-32-45.jpg',
@@ -63,14 +76,19 @@ const CardComponent = props => <Col xs={12} sm={12} md={6} lg={4} style={{paddin
 </Col>;
 
 CardComponent.propTypes = {
-	img: React.PropTypes.string,
-	title: React.PropTypes.string,
+	img: React.PropTypes.string.isRequired,
+	title: React.PropTypes.string.isRequired,
 	subtitle: React.PropTypes.string,
-	text: React.PropTypes.string,
+	text: React.PropTypes.string.isRequired,
 	actions: React.PropTypes.element
 };
 
-const Cards = cardData.map((props, i) => <CardComponent key={i} {...props}/>);
+CardComponent.defaultProps = {
+	actions: '',
+	subtitle: ''
+};
+
+const Cards = cardData.map((props, i) => <CardComponent key={i} {...props}/>); // eslint-disable-line react/no-array-index-key
 
 class Projects extends React.Component {
 	render() {
